@@ -54,6 +54,7 @@
   DevicePathLib
   FileExplorerLib
   PeCoffLib
+  SecureBootVariableLib
 
 [Guids]
   ## SOMETIMES_CONSUMES      ## Variable:L"CustomMode"
