@@ -422,6 +422,9 @@
   ## Include/UniversalPayload/ExtraData.h
   gUniversalPayloadExtraDataGuid = {0x15a5baf6, 0x1c91, 0x467d, {0x9d, 0xfb, 0x31, 0x9d, 0x17, 0x8d, 0x4b, 0xb4}}
 
+  ## GUID used for Boot Discovery Policy FormSet guid and related variables.
+  gBootDiscoveryPolicyMgrFormsetGuid = { 0x5b6f7107, 0xbb3c, 0x4660, { 0x92, 0xcd, 0x54, 0x26, 0x90, 0x28, 0x0b, 0xbd } }
+
 [Ppis]
   ## Include/Ppi/AtaController.h
   gPeiAtaControllerPpiGuid       = { 0xa45e60d1, 0xc719, 0x44aa, { 0xb0, 0x7a, 0xaa, 0x77, 0x7f, 0x85, 0x90, 0x6d }}
@@ -1596,6 +1599,9 @@
   ## Specify the console output row of text setup.
   # @Prompt Console Output Row of Text Setup
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|25|UINT32|0x4000000e
+
+  ## Specify the Boot Discovery Policy settings
+  gEfiMdeModulePkgTokenSpaceGuid.PcdBootDiscoveryPolicy|0|UINT32|0x4000000f
 
 [PcdsFixedAtBuild.AARCH64, PcdsPatchableInModule.AARCH64]
   gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiExposedTableVersions|0x20|UINT32|0x0001004c
