@@ -18,6 +18,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 #include <Library/MemoryAllocationLib.h>
 #include <Library/HiiLib.h>
 #include <Library/PlatformVarCleanupLib.h>
+#include <Library/SecureBootVariableLib.h>
 
 #include <Protocol/Variable.h>
 #include <Protocol/VarCheck.h>

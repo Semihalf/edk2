@@ -34,6 +34,7 @@
 [Packages]
   MdePkg/MdePkg.dec
   MdeModulePkg/MdeModulePkg.dec
+  SecurityPkg/SecurityPkg.dec
 
 [LibraryClasses]
   UefiBootServicesTableLib
@@ -44,6 +45,7 @@
   PrintLib
   MemoryAllocationLib
   HiiLib
+  SecureBootVariableLib
 
 [Guids]
   gEfiIfrTianoGuid                  ## SOMETIMES_PRODUCES   ## GUID
