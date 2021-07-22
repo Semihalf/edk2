@@ -337,6 +337,10 @@ BuildSpcrTableEx (
   AcpiSpcr.GlobalSystemInterrupt = SerialPortInfo->Interrupt;
 
   switch (SerialPortInfo->BaudRate) {
+    case 0:
+      AcpiSpcr.BaudRate =
+        EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_BAUD_RATE_AS_IS;
+      break;
     case 9600:
       AcpiSpcr.BaudRate =
         EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_BAUD_RATE_9600;
