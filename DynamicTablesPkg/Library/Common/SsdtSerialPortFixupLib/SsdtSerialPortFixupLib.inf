@@ -30,3 +30,4 @@
 
 [Pcd]
   gEdkiiDynamicTablesPkgTokenSpaceGuid.PcdNonBsaCompliant16550SerialHid
+  gEdkiiDynamicTablesPkgTokenSpaceGuid.PcdNonBsaCompliant16550SerialCid

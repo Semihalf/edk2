@@ -144,6 +144,7 @@ FixupIds (
   CONST CHAR8             * HidString;
   CONST CHAR8             * CidString;
   CONST CHAR8             * NonBsaHid;
+  CONST CHAR8             * NonBsaCid;
 
   // Get the _CID and _HID value to write.
   switch (SerialPortInfo->PortSubtype) {
@@ -159,7 +160,13 @@ FixupIds (
         }
 
         HidString = NonBsaHid;
-        CidString = "";
+
+        NonBsaCid = (CONST CHAR8*)PcdGetPtr (PcdNonBsaCompliant16550SerialCid);
+        if (NonBsaCid == NULL) {
+          CidString = "";
+        } else {
+          CidString = NonBsaCid;
+	}
       } else {
         HidString = "PNP0501";
         CidString = "PNP0500";
