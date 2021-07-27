@@ -32,6 +32,7 @@
     containing the AML bytecode array.
 */
 extern CHAR8  ssdtserialporttemplate_aml_code[];
+extern CHAR8  ssdtserialporttemplate_16550_aml_code[];
 
 /** UART address range length.
 */
@@ -407,10 +408,13 @@ FixupSerialPortInfo (
     return Status;
   }
 
+  if (SerialPortInfo->PortSubtype !=
+      EFI_ACPI_DBG2_PORT_SUBTYPE_SERIAL_16550_SUBSET_COMPATIBLE_WITH_MS_DBGP_SPEC) {
   // Fixup the _CRS values.
   Status = FixupCrs (RootNodeHandle, SerialPortInfo);
   if (EFI_ERROR (Status)) {
     return Status;
+  }
   }
 
   // Fixup the serial-port name.
@@ -466,6 +470,7 @@ BuildSsdtSerialPortTable (
 {
   EFI_STATUS              Status;
   EFI_STATUS              Status1;
+  CHAR8                  *AmlTemplate;
   AML_ROOT_NODE_HANDLE    RootNodeHandle;
 
   ASSERT (AcpiTableInfo != NULL);
@@ -479,9 +484,16 @@ BuildSsdtSerialPortTable (
     return Status;
   }
 
+  if (SerialPortInfo->PortSubtype ==
+      EFI_ACPI_DBG2_PORT_SUBTYPE_SERIAL_16550_SUBSET_COMPATIBLE_WITH_MS_DBGP_SPEC) {
+    AmlTemplate = ssdtserialporttemplate_16550_aml_code;
+  } else {
+    AmlTemplate = ssdtserialporttemplate_aml_code;
+  }
+
   // Parse the SSDT Serial Port Template.
   Status = AmlParseDefinitionBlock (
-             (EFI_ACPI_DESCRIPTION_HEADER*)ssdtserialporttemplate_aml_code,
+             (EFI_ACPI_DESCRIPTION_HEADER*)AmlTemplate,
              &RootNodeHandle
              );
   if (EFI_ERROR (Status)) {

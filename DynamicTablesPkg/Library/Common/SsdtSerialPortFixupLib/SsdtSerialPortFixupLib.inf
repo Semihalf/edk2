@@ -17,6 +17,7 @@
 [Sources]
   SsdtSerialPortFixupLib.c
   SsdtSerialPortTemplate.asl
+  SsdtSerialPortTemplate_16550.asl
 
 [Packages]
   MdePkg/MdePkg.dec
